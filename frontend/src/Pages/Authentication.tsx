@@ -5,8 +5,6 @@ import { SignUp } from "../components/SignUp";
 export function Authentication() {
   const [isSignUp, setIsSignUp] = useState(false); // false = Sign In, true = Sign Up
 
-  const toggleAuth = () => setIsSignUp(!isSignUp);
-
   return (
     <div className="min-h-screen flex flex-col justify-center items-center bg-gray-50">
       {/* Toggle Buttons */}

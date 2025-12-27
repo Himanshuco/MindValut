@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { ShareIcon } from "../icons/shareicon";
+import { ShareIcon } from "../icons/ShareIcon";
 import { XIcon } from "../icons/XIcon";
 import { EditIcon } from "../icons/EditIcon";
 
@@ -80,24 +80,6 @@ export function Card({ title, link, text, type, id, onDelete, onEdit, canDelete 
       navigator.clipboard.writeText(link);
       onNotification?.('Link copied to clipboard!', 'success');
     }
-  };
-
-  const handleDelete = async () => {
-    if (!id || !onDelete || deleting) return;
-    
-    setDeleting(true);
-    try {
-      await onDelete(id);
-    } catch (error) {
-      console.error("Error deleting content:", error);
-      onNotification?.("Failed to delete content", "error");
-      setDeleting(false);
-    }
-  };
-
-  const handleEdit = () => {
-    if (!id || !onEdit) return;
-    onEdit(id, { title, link, text, type, folderId: folder?.id });
   };
 
   return (

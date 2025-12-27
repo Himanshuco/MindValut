@@ -2,7 +2,11 @@ import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-export function SignIn() {
+interface SignInProps {
+  onClose?: () => void;
+}
+
+export function SignIn({}: SignInProps) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);

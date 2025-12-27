@@ -1,11 +1,11 @@
 import { Button } from '../components/Button';
-import { PlusIcon } from '../icons/Plusicon';
-import { ShareIcon } from '../icons/shareicon';
+import { PlusIcon } from '../icons/PlusIcon';
+import { ShareIcon } from '../icons/ShareIcon';
 import { Card } from '../components/Card';
 import { CreateContentModel } from '../components/CreateComponentModel';
 import { CreateFolderModal } from '../components/CreateFolderModal';
 import { EditModal } from '../components/EditModal';
-import { SideBar } from '../components/SideBar';
+import { SideBar } from '../components/Sidebar';
 import { Notification, useNotification } from '../components/Notification';
 import { ConfirmDialog, useConfirmDialog } from '../components/ConfirmationDialog';
 import { useState, useEffect } from 'react';
@@ -400,7 +400,7 @@ export function DashBoard() {
         <div className="ml-64 p-4 bg-red-50 border border-red-200 rounded">
           <p className="text-red-600">{error}</p>
           <button 
-            onClick={fetchContents} 
+            onClick={() => fetchContents()} 
             className="mt-2 text-blue-600 hover:underline"
           >
             Try again
