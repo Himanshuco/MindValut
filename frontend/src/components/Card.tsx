@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { ShareIcon } from "../icons/ShareIcon";
 import { XIcon } from "../icons/XIcon";
 import { EditIcon } from "../icons/EditIcon";
@@ -23,7 +23,6 @@ interface CardProps {
 
 export function Card({ title, link, text, type, id, onDelete, onEdit, canDelete = false, canEdit = false, onNotification, folder }: CardProps) {
   const twitterRef = useRef<HTMLDivElement>(null);
-  const [deleting, setDeleting] = useState(false);
 
   console.log('Card rendered:', { id, title, canEdit, canDelete, hasOnEdit: !!onEdit, hasOnDelete: !!onDelete });
 
@@ -125,8 +124,7 @@ export function Card({ title, link, text, type, id, onDelete, onEdit, canDelete 
             {canDelete && id && onDelete && (
               <button
                 onClick={() => onDelete(id)}
-                disabled={deleting}
-                className="p-2 sm:p-2.5 text-red-600 dark:text-red-400 bg-red-100 dark:bg-red-900 hover:text-red-700 dark:hover:text-red-300 hover:bg-red-200 dark:hover:bg-red-800 rounded-md transition-colors disabled:opacity-50 border border-red-300 dark:border-red-700 min-w-[44px] min-h-[44px] flex items-center justify-center"
+                className="p-2 sm:p-2.5 text-red-600 dark:text-red-400 bg-red-100 dark:bg-red-900 hover:text-red-700 dark:hover:text-red-300 hover:bg-red-200 dark:hover:bg-red-800 rounded-md transition-colors border border-red-300 dark:border-red-700 min-w-[44px] min-h-[44px] flex items-center justify-center"
                 title="Delete content"
               >
                 <XIcon size={16} />
