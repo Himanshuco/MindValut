@@ -1,3 +1,4 @@
+import dotenv from 'dotenv';
 import express from 'express';
 import cors from 'cors';
 import mongoose from 'mongoose';
@@ -7,17 +8,33 @@ import { connectDB } from './dbconnection.js';
 import { ContentModel, LinkModel, UserModel, FolderModel } from './db.js';
 import { random } from './utils.js';
 
+// Load environment variables from .env file
+dotenv.config();
+
 const app = express();
 
 const JWT_SECRET = process.env.JWT_SECRET || 'your-secret-key-change-this-in-production';
 
 const allowedOrigins = [
   "https://mind-valut-fronted.vercel.app",
-  "https://mind-valut.vercel.app"
+  "http://localhost:5173",
+  "http://localhost:3000",
+  /\.vercel\.app$/
 ];
 
 app.use(cors({
-  origin: allowedOrigins,
+  origin: function(origin, callback) {
+    if (!origin || allowedOrigins.some(allowed => {
+      if (allowed instanceof RegExp) {
+        return allowed.test(origin);
+      }
+      return allowed === origin;
+    })) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
   credentials: true,
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"]
 }));

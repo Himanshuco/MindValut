@@ -2,8 +2,8 @@ import mongoose from 'mongoose';
 
 export const connectDB = async () => {
     try {
-        const mongoUri = process.env.MONGODB_URI || 'mongodb://localhost:27017/mindvault';
-        await mongoose.connect(mongoUri, {
+        const mongoUri = process.env.MONGODB_URI;
+        await mongoose.connect(mongoUri!,{
             // Remove deprecated options if any
         });
         console.log('✅ MongoDB connected successfully');
