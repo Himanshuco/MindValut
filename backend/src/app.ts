@@ -15,8 +15,9 @@ const app = express();
 const JWT_SECRET = process.env.JWT_SECRET || 'your-secret-key-change-this-in-production';
 
 const allowedOrigins = [
-  "https://mind-valut-frontend.vercel.app",
-  "https://mind-valut-backend.vercel.app/api/v1/signup"
+    "https://mind-valut-frontend.vercel.app",
+    "http://localhost:5173",
+    "http://localhost:3000"
 ];
 
 app.use(cors({
