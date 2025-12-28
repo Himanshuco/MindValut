@@ -704,6 +704,9 @@ app.get("/api/v1/brain/:sharelink", async (req, res) => {
         res.status(500).json({ message: "Error accessing shared brain", error: err.message });
     }
 });
+app.get("/", (req, res) => {
+    res.send("MindValut Backend is running.");
+});
 
 app.listen(8000, () => {
     console.log("Server started on port 8000");
