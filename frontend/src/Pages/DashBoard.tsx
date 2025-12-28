@@ -109,7 +109,8 @@ export function DashBoard() {
       });
 
       if (response.data.isShared) {
-        setShareLink(`${window.location.origin}/brain/${response.data.hash}`);
+        const shareUrl = typeof window !== 'undefined' ? `${window.location.origin}/brain/${response.data.hash}` : `https://mind-valut-fronted.vercel.app/brain/${response.data.hash}`;
+        setShareLink(shareUrl);
       }
     } catch (err) {
       console.error("Error checking share status:", err);
@@ -289,7 +290,8 @@ export function DashBoard() {
 
       if (!shareLink && response.data.hash) {
         // If no link exists, generate new
-        setShareLink(`${window.location.origin}/brain/${response.data.hash}`);
+        const shareUrl = typeof window !== 'undefined' ? `${window.location.origin}/brain/${response.data.hash}` : `https://mind-valut-fronted.vercel.app/brain/${response.data.hash}`;
+        setShareLink(shareUrl);
       } else {
         // Remove existing link
         setShareLink(null);
