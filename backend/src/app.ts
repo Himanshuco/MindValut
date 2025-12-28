@@ -11,7 +11,15 @@ const app = express();
 
 const JWT_SECRET = process.env.JWT_SECRET || 'your-secret-key-change-this-in-production';
 
-app.use(cors());
+app.use(cors({
+  origin: [
+    "https://mind-valut-fronted.vercel.app",
+    "https://mind-valut.vercel.app"
+    ,"https://mind-valut-fronted.vercel.app/signin"
+  ],
+  credentials: true,
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"]
+}));
 app.use(express.json());
 connectDB();
 
